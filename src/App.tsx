@@ -12,7 +12,9 @@ export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-  const currTodos = useSelector((state: RootState) => state.currentTodo);
+  const currTodos = useSelector(
+    (state: RootState) => state.currentTodo,
+  ) as Todo | null;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +22,7 @@ export const App: React.FC = () => {
         setIsLoading(true);
         const todoData = await getTodos();
 
-        dispatch(todosSlice.actions.todos(todoData as Todo[]));
+        dispatch(todosSlice.actions.todos(todoData));
       } catch {
         setIsError(true);
       } finally {
