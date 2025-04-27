@@ -8,7 +8,7 @@ import { currentTodoSlice } from '../../features/currentTodo';
 export const TodoList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { status, query } = useSelector((state: RootState) => state.filter);
-  const todos = useSelector((state: RootState) => state.todos) as Todo[];
+  const todos = useSelector((state: RootState) => state.todos);
   const currTodo = useSelector((state: RootState) => state.currentTodo) as Todo | null;
   const [visibleTodos, setVisibleTodos] = useState<Todo[]>([]);
 
